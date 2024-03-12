@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
+.title {
+  font-family: 'Source Code Pro Variable', monospace;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  

@@ -9,7 +9,7 @@ function App() {
     <>
       <div>
         <Header />
-        <div className='h-screen bg-gradient-to-r from-[#212121] via-[#2d2d2d] to-black'>
+        <div className='h-screen bg-gradient-to-r from-[#212121] via-[#161616] to-black'>
           <Title />
           <AddTodo />
         </div>

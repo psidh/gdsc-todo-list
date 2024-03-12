@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 export default function AddTodo() {
   const [todos, setTodos] = useState([]);
   const [todoText, setTodoText] = useState('');
+  const [deletingIndex, setDeletingIndex] = useState(null);
 
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
@@ -34,7 +35,7 @@ export default function AddTodo() {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center  p-16  bg-gradient-to-r from-[#212121] via-[#2d2d2d] to-black text-white'>
+    <div className='flex flex-col items-center justify-center  p-16  bg-gradient-to-r from-[#212121] via-[#161616] to-black text-white'>
       <div className='flex items-center justify-center space-x-3'>
         <textarea
           rows={1}
@@ -43,11 +44,18 @@ export default function AddTodo() {
           value={todoText}
           onChange={(e) => setTodoText(e.target.value)}
           title='todo'
-          className='py-4 px-8  rounded-xl border bg-transparent border-[#8b8b8b] focus:outline-none shadow-teal-800'
+          className='py-4 px-8  rounded-xl 
+          transition-all duration-500
+          border bg-transparent border-[#555555] focus:outline-none 
+          focus:rounded-3xl focus:border-[#afafaf] hover:shadow-lg shadow-gray-300'
         />
         <button
           onClick={addTodo}
-          className='py-4 px-8 rounded-lg hover:bg-opacity-70 focus:outline-none bg-green-600'
+          className='py-5 px-16 hover:px-14 text-2xl font-bold rounded-lg 
+          hover:bg-opacity-70 
+          focus:outline-none hover:bg-[#121212] 
+          border border-[#575757] bg-white text-black hover:text-white 
+          hover:rounded-2xl transition-all  duration-700'
         >
           Add
         </button>
@@ -56,19 +64,32 @@ export default function AddTodo() {
         {todos.map((todo, index) => (
           <div
             key={index}
-            className='mt-12 space-x-4 p-4 border border-[#4d4d4d] rounded-lg'
+            className={`mt-12 space-x-4 p-4 border border-[#4d4d4d] rounded-lg ${
+              index === deletingIndex ? 'fade-out' : ''
+            }`}
           >
             <input
               type='text'
               value={todo}
-              className='py-2 pl-4 bg-transparent focus:outline-none shadow-teal-800'
+              className='py-2 pl-4 bg-transparent focus:outline-none shadow-teal-800 text-xl'
               onChange={(e) => updateTodo(index, e.target.value)}
             />
             <button
-              onClick={() => deleteTodo(index)}
-              className='py-4 px-8 rounded-lg hover:bg-opacity-70 focus:outline-none bg-red-600'
+              onClick={() => {
+                setDeletingIndex(index); // Set the index of the item being deleted
+                setTimeout(() => {
+                  deleteTodo(index); // Delete the item after the animation
+                  setDeletingIndex(null); // Reset the deletingIndex state
+                }, 500); // Wait for the animation duration
+              }}
+              className='
+      py-5 px-8 hover:-translate-y-2 hover:px-10 text-2xl font-bold rounded-lg 
+      hover:bg-opacity-70 
+      focus:outline-none bg-green-500
+      text-white
+      hover:rounded-2xl transition-all  duration-500'
             >
-              Delete
+              Done
             </button>
           </div>
         ))}
