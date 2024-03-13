@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import '../styles/custom.css';
 
 export default function AddTodo() {
   const [todos, setTodos] = useState([]);
@@ -49,14 +50,7 @@ export default function AddTodo() {
           border bg-transparent border-[#555555] focus:outline-none 
           focus:rounded-3xl focus:border-[#afafaf] hover:shadow-lg shadow-gray-300'
         />
-        <button
-          onClick={addTodo}
-          className='py-5 px-16 hover:px-14 text-2xl font-bold rounded-lg 
-          hover:bg-opacity-70 
-          focus:outline-none hover:bg-[#121212] 
-          border border-[#575757] bg-white text-black hover:text-white 
-          hover:rounded-2xl transition-all  duration-700'
-        >
+        <button onClick={addTodo} className='add py-6 px-8 rounded-lg '>
           Add
         </button>
       </div>
@@ -80,7 +74,7 @@ export default function AddTodo() {
                 setTimeout(() => {
                   deleteTodo(index); // Delete the item after the animation
                   setDeletingIndex(null); // Reset the deletingIndex state
-                }, 500); // Wait for the animation duration
+                }, 600); // Wait for the animation duration
               }}
               className='
       py-5 px-8 hover:-translate-y-2 hover:px-10 text-2xl font-bold rounded-lg 

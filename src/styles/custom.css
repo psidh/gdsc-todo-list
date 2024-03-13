@@ -1,0 +1,39 @@
+.add {
+  animation: spin infinite 2s linear;
+  background: conic-gradient(from var(--angle) in hsl longer hue, red, red)
+    border-box;
+  background-color: black;
+  color: white;
+  border: 1px solid #515151;
+}
+
+.add:hover {
+  color: white;
+  background-color: black;
+  animation: lights 1.5s infinite linear;
+  transition: box-shadow 2.5s ease-in-out;
+  transition-duration: 500ms;
+  box-shadow: 0 0 30px red, 0 0 20px green, 0 0 30px blue, 0 0 30px orange; /* Define the disco lights effect */
+}
+
+@keyframes spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes lights {
+  0% {
+    box-shadow: 0 0 10px red, 0 0 20px green, 0 0 30px blue;
+  }
+  20% {
+    box-shadow: 0 0 20px blue, 0 0 30px red, 0 0 40px green;
+  }
+
+  75% {
+    box-shadow: 0 0 30px green, 0 0 40px orange, 0 0 50px red;
+  }
+  100% {
+    box-shadow: 0 0 30px green, 0 0 40px blue, 0 0 50px purple;
+  }
+}

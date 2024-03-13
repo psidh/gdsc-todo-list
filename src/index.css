@@ -7,11 +7,10 @@ body {
 }
 
 .title {
-  font-family: 'Source Code Pro Variable', monospace;
+  font-family: 'Plus Jakarta Sans', monospace;
 }
 
 .fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
-  }
-  
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
