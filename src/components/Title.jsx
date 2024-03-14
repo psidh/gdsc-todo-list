@@ -1,5 +1,5 @@
 // Supports weights 200-900
-import '@fontsource-variable/source-code-pro';
+// import '@fontsource-variable/source-code-pro';
 
 export default function Title() {
   return (
