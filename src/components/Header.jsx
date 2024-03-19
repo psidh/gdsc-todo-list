@@ -1,4 +1,3 @@
-// Supports weights 200-800
 
 export default function Header() {
   return (
